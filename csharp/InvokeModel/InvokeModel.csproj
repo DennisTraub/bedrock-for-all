@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AWSSDK.BedrockRuntime" Version="3.7.408.1" />
-    <PackageReference Include="AWSSDK.Core" Version="3.7.400.47" />
-  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="AWSSDK.BedrockRuntime" Version="3.7.408.12" />
+    </ItemGroup>
 
 </Project>

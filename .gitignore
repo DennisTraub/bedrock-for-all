@@ -1,3 +1,5 @@
+.idea/
 .venv/
 **/bin/
 **/obj/
+/csharp/*.user
