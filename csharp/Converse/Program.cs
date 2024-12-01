@@ -51,7 +51,7 @@ public abstract class Program
         {
             ModelId = modelId,
 
-            // Set up the conversation messages
+            // Set up the user message
             Messages =
             [
                 new Message
@@ -71,7 +71,7 @@ public abstract class Program
                 Temperature = 0.5F,
 
                 // Maximum tokens (words/characters) in the response
-                MaxTokens = 200
+                MaxTokens = 500
             },
         };
 

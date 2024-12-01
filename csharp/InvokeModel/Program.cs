@@ -57,15 +57,15 @@ public abstract class Program
                                <|start_header_id|>assistant<|end_header_id|>
                                """;
         
-        //Format the request using the model's native payload structure.
+        // Format the request using the model's native payload structure.
         var nativeRequest = JsonSerializer.Serialize(new
         {
             // Add the formatted prompt
             prompt = formattedPrompt,
             
             // Optional: Configure inference parameters
-            max_gen_len = 200,
-            temperature = 0.5
+            temperature = 0.5,
+            max_gen_len = 500
         });
 
         // Configure the invoke model request
@@ -85,10 +85,10 @@ public abstract class Program
             // Send the request and get the response
             var response = await client.InvokeModelAsync(request);
             
-            // Decode the model's native response payload.
+            // Decode the model's native response payload
             var modelResponse = await JsonNode.ParseAsync(response.Body);
 
-            // Extract and print the response text.
+            // Extract and print the response text
             var responseText = modelResponse["generation"] ?? "";
             Console.WriteLine(responseText);
         }
