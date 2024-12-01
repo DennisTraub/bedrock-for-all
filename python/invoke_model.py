@@ -1,33 +1,91 @@
+"""
+Getting Started with Amazon Bedrock InvokeModel API
+
+This example demonstrates how to use Amazon Bedrock to generate completions
+using AI models like Anthropic Claude, Amazon Titan, or Meta LLama.
+It shows the basic setup and usage of the Bedrock InvokeModel API using
+the model's native request and response payloads.
+
+Prerequisites:
+- AWS credentials configured (via AWS CLI or environment variables)
+- Appropriate permissions to access Amazon Bedrock
+- Python 3.9+
+- Required package: pip install boto3
+"""
+
 import boto3
 import json
 
-MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
+#-------------------
+# 1. Configuration
+#-------------------
 
-client = boto3.client("bedrock-runtime", region_name="us-east-1")
+# Specify an AWS region
+# Note: Make sure Bedrock is supported in your chosen region
+region = "us-east-1"
 
-request_body = {
-    "anthropic_version": "bedrock-2023-05-31",
-    "messages": [
-        {
-            "role": "user",
-            "content": [
-                {
-                    "type": "text",
-                    "text": "What is 'rubber duck debugging'?"
-                }
-            ]
-        }
-    ],
-    "max_tokens": 500,
+# Choose your model ID. Supported models can be found at:
+# https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference-supported-models-features.html
+model_id = "meta.llama3-8b-instruct-v1:0"
+
+# Your prompt or question for the AI model
+prompt = "Explain 'rubber duck debugging'"
+
+#-------------------
+# 2. Client Setup
+#-------------------
+
+# Initialize the Bedrock Runtime Client
+# The client will use your configured AWS credentials automatically
+client = boto3.client("bedrock-runtime", region_name=region)
+
+#-------------------
+# 3. Request Setup
+#-------------------
+
+# Embed the prompt in Llama 3's instruction format
+formatted_prompt = f"""
+<|begin_of_text|><|start_header_id|>user<|end_header_id|>
+{prompt}
+<|eot_id|>
+<|start_header_id|>assistant<|end_header_id|>
+"""
+
+# Format the request using the model's native payload structure
+native_request = {
+    # Add the formatted prompt
+    "prompt": formatted_prompt,
+
+    # Optional: Configure inference parameters
+    "temperature": 0.5,
+    "max_gen_len": 512
 }
 
-response = client.invoke_model(
-    modelId=MODEL_ID,
-    body=json.dumps(request_body)
-)
+# Configure the invoke model request
+request = {
+    "modelId": model_id,
+    "body": json.dumps(native_request),
+    "contentType":"application/json"
+}
 
-response_body = json.loads(response["body"].read())
+#----------------------
+# 4. Send the Request
+#----------------------
 
-response_text = response_body["content"][0]["text"]
+try:
+    # Send the request and wait for the response
+    response = client.invoke_model(**request)
 
-print(response_text)
+    # Decode the model's native response payload
+    native_response = json.loads(response["body"].read())
+
+    # Extract and print the response text
+    text = native_response["generation"]
+    print(text)
+
+except Exception as error:
+    print(f"Error: {str(error)}")
+    # In production, you should handle specific exceptions:
+    # - AccessDeniedException: Missing access permissions
+    # - ValidationException: Invalid request parameters
+    # - etc.

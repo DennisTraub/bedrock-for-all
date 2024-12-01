@@ -1,9 +1,13 @@
 .idea/
 .venv/
-**/bin/
-**/obj/
-**/csharp/*.user
-**/target/
-**/node_modules/
+bin/
+obj/
+venv/
+target/
+node_modules/
 
-**/package-lock.json
+*.user
+*.iml
+
+package-lock.json
+

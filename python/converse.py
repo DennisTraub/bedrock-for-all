@@ -1,21 +1,87 @@
+"""
+Getting Started with Amazon Bedrock Converse API
+
+This example demonstrates how to use Amazon Bedrock to generate completions
+using AI models like Anthropic Claude, Amazon Titan, or Meta LLama.
+It shows the basic setup and usage of the Bedrock Converse API.
+
+Prerequisites:
+- AWS credentials configured (via AWS CLI or environment variables)
+- Appropriate permissions to access Amazon Bedrock
+- Python 3.9+
+- Required package: pip install boto3
+"""
+
 import boto3
 
-MODEL_ID = "anthropic.claude-3-haiku-20240307-v1:0"
+#-------------------
+# 1. Configuration
+#-------------------
 
-client = boto3.client("bedrock-runtime", region_name="us-east-1")
+# Specify an AWS region
+# Note: Make sure Bedrock is supported in your chosen region
+region = "us-east-1"
 
-messages = [
-    {
-        "role": "user", 
-        "content": [{"text": "What is 'rubber duck debugging'?"}]
+# Choose your model ID. Supported models can be found at:
+# https://docs.aws.amazon.com/bedrock/latest/userguide/conversation-inference-supported-models-features.html
+model_id = "meta.llama3-8b-instruct-v1:0"
+
+# Your prompt or question for the AI model
+prompt = "Explain 'rubber duck debugging'"
+
+#-------------------
+# 2. Client Setup
+#-------------------
+
+# Initialize the Bedrock Runtime Client
+# The client will use your configured AWS credentials automatically
+client = boto3.client("bedrock-runtime", region_name=region)
+
+#-------------------
+# 3. Request Setup
+#-------------------
+
+# Configure the request
+request = {
+    "modelId": model_id,
+
+    # Set up the user message
+    "messages": [
+        {
+            # Specify the role (user/assistant)
+            "role": "user",
+
+            # Add the message content
+            "content": [{"text": prompt}]
+        }
+    ],
+
+    # Optional: Configure inference parameters
+    "inferenceConfig": {
+
+        # Temperature controls response randomness
+        "temperature": 0.5,
+
+        # Maximum tokens (words/characters) in the response
+        "maxTokens": 500
     }
-]
+}
 
-response = client.converse(
-    modelId=MODEL_ID,
-    messages=messages
-)
+#----------------------
+# 4. Send the Request
+#----------------------
 
-response_text = response["output"]["message"]["content"][0]["text"]
+try:
+    # Send the request and wait for the response
+    response = client.converse(**request)
 
-print(response_text)
+    # Extract and display the response text
+    text = response["output"]["message"]["content"][0]["text"]
+    print(text)
+
+except Exception as error:
+    print(f"Error: {str(error)}")
+    # In production, you should handle specific exceptions:
+    # - AccessDeniedException: Missing access permissions
+    # - ValidationException: Invalid request parameters
+    # - etc.
