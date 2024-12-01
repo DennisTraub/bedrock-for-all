@@ -12,7 +12,7 @@ namespace InvokeModel;
 /// This example demonstrates how to use Amazon Bedrock to generate completions
 /// using AI models like Anthropic Claude, Amazon Titan, or Meta LLama.
 /// It shows the basic setup and usage of the Bedrock InvokeModel API using
-/// the model's native request and response payloads
+/// the model's native request and response payloads.
 /// 
 /// Prerequisites:
 /// - AWS credentials configured (via AWS CLI or environment variables)
@@ -49,7 +49,7 @@ public abstract class Program
         // 3. Request Setup
         //-------------------
         
-        // Embed the prompt in Llama 3's instruction format.
+        // Embed the prompt in Llama 3's instruction format
         var formattedPrompt = $"""
                                <|begin_of_text|><|start_header_id|>user<|end_header_id|>
                                {prompt}
@@ -57,7 +57,7 @@ public abstract class Program
                                <|start_header_id|>assistant<|end_header_id|>
                                """;
         
-        // Format the request using the model's native payload structure.
+        // Format the request using the model's native payload structure
         var nativeRequest = JsonSerializer.Serialize(new
         {
             // Add the formatted prompt
@@ -82,7 +82,7 @@ public abstract class Program
 
         try
         {
-            // Send the request and get the response
+            // Send the request and wait for the response
             var response = await client.InvokeModelAsync(request);
             
             // Decode the model's native response payload

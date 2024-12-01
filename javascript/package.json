@@ -1,0 +1,10 @@
+{
+  "name": "amazon-bedrock-javascript-examples",
+  "version": "0.1.0",
+  "author": "Dennis Traub <dennis.traub@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "@aws-sdk/client-bedrock-runtime": "^3.699.0"
+  }
+}

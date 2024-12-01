@@ -6,7 +6,20 @@
 
     <groupId>aws.community.examples</groupId>
     <artifactId>InvokeModel</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Dennis Traub</name>
+            <email>dennis.traub@gmail.com</email>
+        </developer>
+    </developers>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
