@@ -1,44 +1,84 @@
 # Amazon Bedrock for All
 
-_This repo is still WIP_
-
-<!--
-Educational examples of using Amazon Bedrock across multiple programming languages. No Python? No problem! Generative AI is there for all of us.
+Educational examples of using Amazon Bedrock across multiple programming languages.
 
 ## About
 
-This repository contains code samples demonstrating how to use Amazon Bedrock with various programming languages. It's designed to show that generative AI is accessible to all developers, regardless of their preferred language.
+This repository contains code samples demonstrating how to use Amazon Bedrock with various programming languages. It's designed to show that generative AI is accessible to all developers, regardless of their preferred programming language.
+
+Each example is thoroughly documented with inline comments explaining the code's functionality, making it easy to understand and adapt to your own projects.
+
+## Prerequisites
+
+Before running any of the examples, you'll need:
+
+- An AWS account with access to Amazon Bedrock
+- AWS credentials configured (via AWS CLI or environment variables)
+- The appropriate AWS SDK for your chosen programming language
+- Basic familiarity with your chosen programming language
 
 ## Languages
 
-[Work in progress]
+- [Python](./python) - Using boto3
+- [Java](./java) - Using the AWS SDK for Java v2
+- [JavaScript](./javascript) - Using AWS SDK for JavaScript v3
+- [C#](./csharp) - Using the AWS SDK for .NET
+- [PHP](./php) - Using the AWS SDK for PHP
 
-- [Python](./python)
-- [Java](./java)
-- [JavaScript](./javascript)
-- [C#](./csharp)
-- [PHP](./php)
-- [Go](./go)
-- [Rust](./rust)
-- [Kotlin](./kotlin)
-- [Swift](./swift) -->
+## Examples
+Each language directory contains three core examples:
 
-<!-- ## Structure
+**1. InvokeModel API**
 
-Each language directory contains examples for:
+- Direct model invocation using native model payloads
+- Demonstrates low-level API interaction
+- Useful for fine-grained control over model parameters
 
-1. Basic usage with `invoke_model`
-2. Simplified interactions using the Converse API
-3. Streaming responses for real-time applications -->
+**2. Converse API**
 
-<!-- ## Usage
+- A typed and unified API that works across different model providers
+- Simplified request/response structure
+- Ideal for production applications
 
-This repository is for educational purposes only. Feel free to clone and experiment with the code samples. -->
+**3. ConverseStream API**
 
-<!-- ## Contributing
+- Streaming version of the Converse API
+- Provides real-time response generation
+- Perfect for interactive applications
 
-This is an educational repository and does not accept Pull Requests or Issues. For the latest on Amazon Bedrock, please refer to the [official documentation](https://aws.amazon.com/developer/generative-ai/bedrock/?trk=2483aad2-15a6-4b7a-a1c5-189851586b67&sc_channel=el). -->
+Each example includes:
 
-<!-- ## License
+- Complete, working code
+- Detailed comments explaining each section
+- Configuration options
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. -->
+## Getting Started
+
+1. Clone this repository
+2. Navigate to your preferred language directory
+3. Install the required dependencies
+4. Configure your AWS credentials
+5. Run the examples
+
+## Usage
+
+This repository is for educational purposes only. The code samples are designed to be:
+
+- Easy to understand
+- Ready to run
+- Simple to modify
+- Adaptable for your own projects
+
+## Contributing
+
+As an educational repository, it does not accept Pull Requests or Issues. For the latest information on Amazon Bedrock, please refer to the [official documentation](https://aws.amazon.com/developer/generative-ai/bedrock/?trk=2483aad2-15a6-4b7a-a1c5-189851586b67&sc_channel=el).
+
+## Additional Resources
+
+- [Amazon Bedrock Documentation](https://aws.amazon.com/developer/generative-ai/bedrock/?trk=2483aad2-15a6-4b7a-a1c5-189851586b67&sc_channel=el)
+- [AWS SDK Documentation](https://aws.amazon.com/developer/tools/?trk=2483aad2-15a6-4b7a-a1c5-189851586b67&sc_channel=el)
+- [AWS Free Tier](https://aws.amazon.com/free/?trk=2483aad2-15a6-4b7a-a1c5-189851586b67&sc_channel=el)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
