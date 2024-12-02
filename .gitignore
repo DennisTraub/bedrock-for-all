@@ -1,13 +1,2 @@
-.idea/
-.venv/
-bin/
-obj/
-venv/
-target/
-node_modules/
-
-*.user
 *.iml
-
-package-lock.json
-
+**/.idea/

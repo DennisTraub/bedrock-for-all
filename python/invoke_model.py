@@ -9,7 +9,6 @@ the model's native request and response payloads.
 Prerequisites:
 - AWS credentials configured (via AWS CLI or environment variables)
 - Appropriate permissions to access Amazon Bedrock
-- Python 3.9+
 - Required package: pip install boto3
 """
 

@@ -8,7 +8,6 @@ It shows the basic setup and usage of the Bedrock Converse API.
 Prerequisites:
 - AWS credentials configured (via AWS CLI or environment variables)
 - Appropriate permissions to access Amazon Bedrock
-- Python 3.9+
 - Required package: pip install boto3
 """
 
