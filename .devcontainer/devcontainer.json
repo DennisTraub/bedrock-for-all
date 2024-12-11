@@ -1,0 +1,16 @@
+{
+	"name": "Ubuntu",
+	"image": "mcr.microsoft.com/devcontainers/base:jammy",
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {},
+		"ghcr.io/devcontainers/features/python:1": {},
+		"ghcr.io/devcontainers/features/node:1": {},
+		"ghcr.io/devcontainers/features/aws-cli:1": {},
+		"ghcr.io/devcontainers/features/java:1": {
+			"jdkDistro": "ms",
+			"version": "latest",
+			"installMaven": true,
+			"mavenVersion": "latest"
+		}
+	}
+}
