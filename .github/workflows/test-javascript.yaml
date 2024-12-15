@@ -1,5 +1,6 @@
 name: Test JavaScript examples
 on:
+  workflow_dispatch:
   pull_request:
     branches: ["main"]
 
