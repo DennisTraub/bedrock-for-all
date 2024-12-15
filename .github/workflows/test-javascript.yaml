@@ -29,3 +29,9 @@ jobs:
 
       - name: Test `invokeModel`
         run: node invokeModel/invokeModel.js
+
+      - name: Test `converse`
+        run: node converse/converse.js
+
+      - name: Test `converseStream`
+        run: node converseStream/converseStream.js
